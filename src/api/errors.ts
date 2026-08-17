@@ -25,6 +25,19 @@ const FIELD_LABELS: Record<string, string> = {
   'normalized_limits.primary_flows': 'Primary flows',
   'normalized_limits.data_mode': 'Data mode',
   sensitive_data_warning_acknowledged: 'Sensitive-data warning',
+  'goal.target_user': 'Target user',
+  'goal.problem': 'Problem',
+  'goal.desired_outcome': 'Desired outcome',
+  'goal.primary_flow': 'Primary flow',
+  'goal.must_haves': 'Must-haves',
+  'goal.non_goals': 'Non-goals',
+  'goal.visual_direction': 'Visual direction',
+  'goal.constraints.max_screens': 'Maximum screens',
+  'goal.constraints.primary_flows': 'Primary flows',
+  'goal.constraints.client_only': 'Client-only prototype',
+  'goal.constraints.data_mode': 'Data mode',
+  attachment_ids: 'Attachments',
+  start_run: 'Start run',
 };
 
 export function associateFieldErrors(problem: ProblemDetails): Record<string, string> {
@@ -63,11 +76,26 @@ function fieldMessage(field: string, rule: string, fallback: string): string {
   if (rule === 'durable_constraints_required') {
     return 'Add between 1 and 20 durable constraints, each up to 200 characters.';
   }
+  if (rule === 'client_only') {
+    return 'The prototype must stay client-only. Server-backed product work is out of scope.';
+  }
+  if (rule === 'unique_must_have_ids') {
+    return 'Each must-have needs a unique MH-NNN identifier.';
+  }
+  if (rule === 'first_slice_requires_start_run') {
+    return 'The first goal version must start a run.';
+  }
+  if (rule === 'validated_ready_unexpired') {
+    return 'Replace attachments that are unvalidated, rejected, or expired.';
+  }
   const label = FIELD_LABELS[field] ?? field;
   return `${label}: ${fallback}`;
 }
 
 export function formAlert(problem: ProblemDetails, fieldErrors: Record<string, string>): string {
+  if (problem.code === 'goal_out_of_scope') {
+    return `${problem.title}. ${problem.detail} Edit the draft to narrow scope; it was not truncated.`;
+  }
   if (Object.keys(fieldErrors).length > 0) {
     return problem.title ?? 'Correct the highlighted fields and retry.';
   }
