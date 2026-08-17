@@ -1,6 +1,6 @@
 # Design System: AI Company OS
 
-Reading this as: B2B invite-only SaaS in one Next.js app for technical founders, with a calm editorial software language on `/`, leaning toward Tailwind + Geist; plus an accessibility-critical company setup form at `/company`.
+Reading this as: B2B invite-only SaaS in one Next.js app for technical founders, with a calm editorial software language on `/`, leaning toward Tailwind + Geist; plus accessibility-critical founder forms at `/company` and `/goal`.
 
 **Landing dials:** VARIANCE 6 · MOTION 4 · DENSITY 3  
 **Webapp dials:** VARIANCE 4 · MOTION 2 · DENSITY 5

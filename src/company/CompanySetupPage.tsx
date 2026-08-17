@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { getCurrentCompany } from '../api/client';
 import { isApiError } from '../api/errors';
 import type { Company, CompanyDraft } from '../api/types';
@@ -90,7 +91,20 @@ export function CompanySetupPage() {
             keeps the frozen snapshot it captured. Start a new run if you want
             later edits to apply.
           </p>
+          <p className="mt-3">
+            <Link href="/goal" className="inline-flex min-h-11 items-center text-pine">
+              Continue to goal intake
+            </Link>
+          </p>
         </div>
+      ) : null}
+
+      {load.status === 'edit' && !committed ? (
+        <p className="mt-6">
+          <Link href="/goal" className="inline-flex min-h-11 items-center text-sm text-pine">
+            Continue to goal intake
+          </Link>
+        </p>
       ) : null}
 
       <div className="mt-8">
