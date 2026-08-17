@@ -19,7 +19,7 @@ jobs:
           node-version: 24.18.0
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
       - name: Delivery governance
         if: github.event_name == 'pull_request'
         env:
