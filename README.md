@@ -1,13 +1,14 @@
 # AI Company OS Web
 
-Invite-only founder landing and control-plane webapp for [AI Company OS](https://github.com/duckvhuynh/aicompanyos).
+Invite-only founder control plane for [AI Company OS](https://github.com/duckvhuynh/aicompanyos).
 
-This repository implements the founder-facing surfaces. The parent delivery backlog remains the product authority. The NestJS API lives in [`aico-backend`](https://github.com/duckvhuynh/aico-backend).
+This repository is a single Next.js app: the public landing page plus authenticated company setup. The parent delivery backlog remains the product authority. The NestJS API lives in [`aico-backend`](https://github.com/duckvhuynh/aico-backend).
 
 ## Surfaces
 
-- `apps/landing` — Next.js public landing. Invite-only. No public registration.
-- `apps/app` — Vite + React + Tailwind founder webapp. Company setup against `/api/v1`.
+- `/` — public landing. Invite-only. No public registration.
+- `/enter` — redeem an invite token.
+- `/company` — accessible company profile create and update against `/api/v1`.
 
 ## Delivery governance
 
@@ -21,11 +22,10 @@ Prerequisites: Node.js 24.18.0 and a running local API from `aico-backend` at `h
 
 ```bash
 npm install
-npm run dev:landing
-npm run dev:app
+npm run dev
 ```
 
-The landing defaults to `http://localhost:3001`. The webapp defaults to `http://localhost:5173` and proxies `/api` to the backend.
+The app listens on `http://localhost:3001` and rewrites `/api` to the backend.
 
 Issue a local invite from the API (`AUTH_MODE=development`, `APP_ENV=local|test`):
 
@@ -35,7 +35,7 @@ curl -s -X POST http://localhost:3000/api/v1/auth/invites \
   -d "{\"email\":\"founder@example.com\",\"display_name\":\"Founder\"}"
 ```
 
-Open `/enter` in the webapp and redeem the `invite_token`.
+Open `/enter` and redeem the `invite_token`.
 
 ## Verify
 
