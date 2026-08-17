@@ -25,8 +25,7 @@ Every feature must have one parent `aicompanyos` issue that exists in the delive
 
 ## Stack
 
-- Public landing: Next.js
-- Founder webapp: Vite, React, Tailwind CSS
+- Next.js App Router for the public landing and the founder control plane
 - Accessibility target for control-plane core flows: WCAG 2.2 AA
 
 ## Definition of done
