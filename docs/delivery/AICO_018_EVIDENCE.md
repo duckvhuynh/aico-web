@@ -5,8 +5,8 @@
 **Evidence date:** 2026-08-17  
 **Canonical command:** `npm run verify`
 
-**Hosted PR SHA:** pending  
-**Hosted Frontend CI:** pending
+**Hosted PR SHA:** `40b46900a87ebc8bf7f0214802396343ee8a288c`  
+**Hosted Frontend CI:** https://github.com/duckvhuynh/aico-web/actions/runs/32018847532
 
 The founder intake form covers the US-002 fields, states prototype limits on
 every visit, preserves draft values and uploaded attachment references through
@@ -25,12 +25,12 @@ status instead of optimistic generated narration.
 
 ## Acceptance reconciliation
 
-| ID               | Parent criterion                                                                                          | Evidence                                      | Result  |
-| ---------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------- |
-| A18-FORM-01      | Form covers the authoritative fields and persistently states one flow, five screens, client/mock, prototype-only limits. | Goal intake form, Playwright axe              | Pending |
-| A18-VALIDATE-01  | Accessible client/server validation preserves values, attachment state, and actionable warnings.          | Vitest + Playwright 422 case                  | Pending |
-| A18-SUBMIT-01    | Submit is idempotent and routes to persisted qualification status rather than optimistic narration.       | Playwright submit to run status               | Pending |
-| A18-BOUND-01     | No AICO-019 qualification records, no AICO-020 analytics, no 23rd backend gate.                           | Status page reads GET `/runs/{id}` only       | Pending |
+| ID              | Parent criterion                                                                                                     | Evidence                                                                                          | Result |
+| --------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------ |
+| A18-FORM-01     | Form covers the authoritative fields and persistently states one flow, five screens, client/mock, prototype-only limits. | Goal intake form, Playwright axe. Hosted verify: https://github.com/duckvhuynh/aico-web/actions/runs/32018847532 | Pass   |
+| A18-VALIDATE-01 | Accessible client/server validation preserves values, attachment state, and actionable warnings.                     | Vitest + Playwright 422 case. Hosted verify: https://github.com/duckvhuynh/aico-web/actions/runs/32018847532 | Pass   |
+| A18-SUBMIT-01   | Submit is idempotent and routes to persisted qualification status rather than optimistic narration.                  | Playwright submit to run status. Hosted verify: https://github.com/duckvhuynh/aico-web/actions/runs/32018847532 | Pass   |
+| A18-BOUND-01    | No AICO-019 qualification records, no AICO-020 analytics, no 23rd backend gate.                                      | Status page reads GET `/runs/{id}` only. Hosted verify: https://github.com/duckvhuynh/aico-web/actions/runs/32018847532 | Pass   |
 
 ## Non-goals kept
 
